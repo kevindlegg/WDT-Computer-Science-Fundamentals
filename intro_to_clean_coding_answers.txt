@@ -1,0 +1,161 @@
+1. Clean code is easily readable code that doesn't have repetitive logic, isn't bloated, is modular in design based on Class, Method/Function, etc, and has properly named Classes/Methods/Variables, etc.
+
+2. Many modern clothes dryers are commonly controlled by code...if, as in the Toyota story, there were failures in said code, a dryer could overheat possibly causing other parts to fail, breakers to blow and at worst a fire.
+
+3. I would not consider the code example to be "clean code":
+    - parameter variable names aren't descriptive
+    - not enough indentation
+    - temperature measurement calculations could be made into separate functions
+
+    Refactored:
+        FUNCTION do(temperature, measurement)
+            VAR isFarenheit = "F"
+            VAR isCelsius = "C"
+
+            IF measurement = isFarenheit THEN
+                SET newTemperature to toCelsius
+                printTemperature()
+            ELSE IF measurement = isCelsius THEN                     
+                SET newTemperature to toFarenheit(temperature)
+                printTemperature()
+            END IF
+        
+        END FUNCTION
+
+        FUNCTION toFarenheit(celsius)
+            RETURN celsius * 1.8000 + 32.00
+        END FUNCTION
+
+        FUNCTION toCelsius(fahrenheit)
+            RETURN (farenheit − 32.00) * (5/9)
+        END FUNCTION
+
+        FUNCTION printTemperature (temperature)
+            PRINT temperature
+        END FUNCTION
+
+4. The code is fairly "clean".  The only thing I see that is too noticeable in the function name could be spelled out - calculatePercentage (for instance).
+
+5. 
+    a. Refactored code:
+        FUNCTION checkOutCustomer(subTotal, discountRate, paymentType)
+            PRINT "Your total due is: " + amountToPay
+
+            getPaymentAmount()
+
+            IF isCashPayment(paymentType) THEN
+                PRINT "Change due: " + amount - amountToPay
+            ELSE IF isCrecitCardPayment(paymentType) THEN
+                PRINT "Your credit card has been charged: " + amountToPay
+            END IF
+        END FUNCTION
+
+        FUNCTION amountToPay(subTotal, discountRate, paymentType)
+            RETURN (subTotal * discountRate + (subTotal * tax))
+        END FUNCTION
+
+        FUNCTION getPaymentAmount()
+            CALL getPayment RETURNING amount
+            RETURN amount
+        END FUNCTION
+
+        FUNCTION isCashPayment(paymentType)
+            RETURN (paymentType = 'CASH')
+        END FUNCTION
+
+        FUNCTION isCrecitCardPayment(paymentType)
+            RETURN (paymentType = 'CREDIT CARD')
+        END FUNCTION
+
+    b. Refactored code:
+        FUNCTION checkoutBook(book, guest)
+        IF isAccountOK(guest)
+                APPEND book to guest.books
+                SET book.status to "Checked Out"
+                PRINT "Your books have been issued."
+            END IF
+        ELSE
+            PRINT "Unable to check out book."
+        END IF
+        END FUNCTION
+
+        FUNCTION isAccountOK(guest)
+            RETURN (guest.accountActive and NOT(guest.hasOverdueBook) AND guest.outstandingFees = 0)
+        END FUNCTION
+    
+    c. Refactored code:
+        CLASS BankAccount
+
+            FUNCTION displayBalance
+                PRINT balance
+            END FUNCTION
+
+            FUNCTION deposit(amount)
+                SET balance to balance + amount
+            END FUNCTION
+
+            FUNCTION withdraw(amount)
+                IF balance > amount THEN
+                SET balance to balance - amount
+                END
+            END FUNCTION
+
+        END
+
+
+        CLASS AccountOffers
+
+            FUNCTION creditCardOffer
+                IF NOT(customer.hasCreditCard) THEN
+                    CALL offerCreditCard
+                END
+            END FUNCTION
+
+            FUNCTION checkStatus
+                IF NOT(customer.hasCheckingAccount) THEN
+                    CALL offerCheckingAccount
+                END
+            END FUNCTION
+        
+        END
+
+6.  Square Given an array of integers, find out whether the sum of the integers is a perfect square. If it is a perfect square, return the square root, otherwise return the sum.
+
+        const isSquare = (numbers) => {
+            let numberSum = numbers.reduce((tot, num) => (tot + num));
+            let square = Math.sqrt(numberSum);
+            return ( square  % 1 === 0 ) ? square :numberSum;
+        }
+
+7.  Duplicate Given an array of integers, find out whether the array contains any         duplicate elements. The function should return true if any value appears at least     twice in the array, and false if every element is distinct.
+
+        const hasDuplicates = (numbers) => {
+            for (let i = 0; i < numbers.length; i++) {
+                let numberCount = numbers.filter(num => num === numbers[i]).length;
+                if (numberCount > 1) {
+                    return true;
+                }
+            }
+            
+            return false;
+        }
+
+Extra Credit
+8.  Anagram An anagram is a word, phrase, or name formed by rearranging the letters of another word. For example, spar can be formed from rasp. Given two strings, stringOne and stringTwo, determine if stringOne is an anagram of stringTwo. Assume that the strings contain only lowercase letters and do not worry about case-sensitivity. Hint: Your first task will be to convert the strings to arrays.
+
+       const isAnagram = (stringOne, stringTwo) => {
+            if (stringOne.length === stringTwo.length) {
+                arrayOne = Array.from(stringOne);
+                arrayTwo = Array.from(stringTwo);
+
+                for (let i = 0; i < arrayOne.length; i++) {
+                    let isFound = arrayTwo.filter(letter => letter === arrayOne[i]).length;
+                    if (!isFound) {
+                        return false;
+                    }
+                }
+                return true;
+            } else {
+                return false;
+            }
+        }
