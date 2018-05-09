@@ -1,0 +1,71 @@
+Exercises
+For exercises requiring code, you are free to use the language of your choice.
+
+1. What is a hash table?
+    - a type of data structure designed to hold a variable number of consistently formatted values, each with an identifier.
+
+2. What is hashing?
+    - process of converting arbitrary data into a fixed-length hash code using a hashing function.
+
+3. How does a hash table store data?
+    - each value linked to a distinct key that forms a key-value pair. Each key-value pair is stored in a particular location within an array maintained internally in the hash table. 
+
+4. How are hash tables and objects different?
+    - hash tables contain a varying amount of data while objects are more static
+
+5. Determine whether you would use a hash table or an object to store each of the following pieces of data:
+ - A list of pets and their unique names.
+    * hash table
+
+ - The name, age, and the birthday of your best friend.
+    * object
+
+ - The name and location of every company in a given city.
+    * hash table
+
+ - All of the books checked out from a library by a particular individual.
+    * hash table
+
+ - The primary and secondary phone numbers for a contact.
+    * object 
+
+6. Build a system that allows a sales associate to enter a customer's name, address, and phone number into the system and look up customers using their phone numbers. Store this information in a hash table.
+function createCustomer(customer){
+  CREATE HashMapCustomer
+  STORE each phoneNumber(key) within customer into HashMapCustomer and associate with a customer's name and address (values)
+}
+
+function lookupCustomer(phoneNumber){
+  RETRIEVE a customer (object) from HashMapCustomer using phoneNumber to lookup the key
+  RETURN a customer (object)
+}
+
+7. Build a system that allows a store owner to track their store's inventory using a hash table for storage.
+function addItems(storeItem){
+  CREATE HashMapInventory
+  STORE each itemNumber (key) within storeItem into HashMapCustomer and associate with a item's description, price and items in stock (values)
+}
+
+function lookupItem(itemNumber){
+  RETRIEVE an item (object) from HashMapCustomer using itemNumber to lookup the key
+  RETURN an item (object)
+}
+
+function deleteItem(itemNumber){
+  DELETE an item (object) from HashMapCustomer using itemNumber to lookup the key
+}
+
+function adjustItemStock(itemNumber, addRemoveNumber){
+  UPDATE an item's itemInStock (value) with addRemoveNumber from HashMapCustomer using itemNumber to lookup the key
+}
+
+8. Build a system that allows digital copies of newspapers to be entered and searched by publisher and publication date. Use hash tables to store the necessary data.
+function addPublication(publication){
+  CREATE HashMapPublication
+  STORE each publisher (key) and publication date (key) within publication into HashMapNewsPaper and associate with publication description (values)
+}
+
+function lookupPublication(publisher, publicationDate){
+  RETRIEVE a publication (object) from HashMapPublication using publisher and publicationDate to lookup the key
+  RETURN a publication (object)
+}
