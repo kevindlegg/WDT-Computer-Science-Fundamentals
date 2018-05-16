@@ -1,0 +1,78 @@
+Exercises
+
+1. What is the main difference between a stack and a queue?
+    - a stack arranges elements LIFO while a queue arranges elements FIFO
+2. What are the similarities between stacks and queues?
+    - both are a means for prioritizing elements/processes
+
+3. Imagine you are an engineer tasked with implementing the UNDO and REDO options in a word processor such as Microsoft Word. Which data structure would you use for each option and why?
+    - both require a stack because the process requires keeping track of the most recent event to either remove (UNDO) or add back (REDO)
+
+Programming Questions
+
+1. Given a string, reverse it using a stack. For example, the string "Bloc!" should be converted to "!colB".
+    FUNCTION REVERSE(originalString)
+        INIT a new stack
+        FOR each character in originalString
+            CALL stack.push WITH character
+        END FOR
+
+        INIT reversedString to empty string
+            WHILE stack is not empty
+                CALL stack.pop RETURNING character
+                APPEND character to reversedString
+            END WHILE
+        RETURN reversedString
+    END FUNCTION
+
+    const reverse = (originalString) => {
+        let stack = [];
+        for (let i = originalString.length; i >= 0; i--)
+            stack.push(originalString[i]);
+
+        let reversedString = "";
+        while (stack) {
+            let letter = stack.pop();
+            reversedString += letter;            
+        }
+        return reversedString;
+    }
+
+2. Implement the delete functionality of a stack using one queue. Make a FIFO data structure mirror the functionality of a LIFO data structure.
+
+    To delete an item, take all of the elements in the queue one at a time and put them at the end of the queue, except for the last one which should be deleted and returned.
+
+    CLASS Stack
+    FUNCTION pop(queue)
+        REMOVE first element of queue from queue
+        RETURN removed element of queue
+    END FUNCTION
+    END CLASS
+
+    class Stack {
+        const pop = (queue) => {
+            return queue.shift();
+        }
+    }
+
+3. Fill in the methods for the following Queue class so that it will work as expected (FIFO).
+
+    CLASS QUEUE
+    FUNCTION enqueue(element)
+        CALL queue.push WITH element
+    END FUNCTION
+
+    FUNCTION dequeue
+        CALL queue.pop
+    END FUNCTION
+    END CLASS
+
+    class Queue {
+        const enqueue = (element) {
+            queue.push(element);
+        }
+
+        const dequeue = () => {
+            queue.pop();
+        }
+    }

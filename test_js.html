@@ -1,0 +1,23 @@
+<!DOCTYPE hmtl>
+<html>
+
+<body>
+    <script>
+    const reverse = (originalString) => {
+        let stack = [];
+        for (let i = 0; i < originalString.length; i++)
+            stack.push(originalString[i]);
+
+        let reversedString = "";
+        while (stack.length > 0) {
+            let letter = stack.pop();
+            reversedString += letter;            
+        }
+        return reversedString;
+    }
+
+console.log(reverse("kevin"));
+    </script>
+</body>
+
+</html>
