@@ -1,0 +1,75 @@
+Exercises
+    For exercises requiring code, you are free to use the language of your choice.
+
+    Create a file named graphs_and_trees_answers.txt and answer these questions in it.
+
+    1. What is a binary tree and what makes it unique to other trees?
+        - a binary tree is a data structure that only has two child nodes - a left and a right. a binary tree can be empty. subtrees in a binary tree are ordered. the root node has no in-degree...subsequent nodes can only have one in-degree.
+
+    2. What is a heuristic?
+        - guesses that an algorithm makes to solve a complex problem sooner by sacrificing accuracy.
+
+    3. What is another problem besides the shortest-path problem that requires the use of heuristics?
+        - artificial intelligence
+
+    4. What is the difference between a depth-first search and a breadth-first search?
+        - a DFS searches down one branch of the tree before returning to the root and searching down the other side; a BFS explores the entire width of each row of nodes before moving downward
+
+    5. Explain in your own words what an undirected, a-cyclic, unweighted graph is.
+        - a graph of nodes with many/random inputs/outputs that only move in one direction and have a an end.
+
+    6. What kind of graph is a binary search tree?
+        - a directed, a-cyclic, unweighted graph.
+
+Programming Questions
+For the following questions, describe in words how you could solve the problem and then do so. Use the depiction of the Binary Search Tree to refer to the examples.
+
+Binary Search Tree Image
+
+    1. Given a Binary Search Tree and a value, write a function that checks to see whether the value exists within the tree.
+
+        Example: The value 10 exists in the tree. The value 23 does not exist in the tree.
+
+        beginning with the root, evaluate whether the value is less than or greater than the root value.  if it's less move down the left side of the tree, repeat this process for each subsequent node while the node value is not equal to the passed value.
+
+        const findTreeValue = (tree, value) => {
+            let current = tree.root;
+            while (current) {
+                if (value <= current.left) {
+                    current = current.left;
+                } else if (value >= current.right) {
+                    current = current.right;                    
+                };
+
+                if (value === current) {
+                    return current;
+                }
+
+            }
+            return current ? current : "Not found";
+        }
+
+    2. Given a Binary Search Tree and two nodes, n1 and n2, write a function that finds the distance between the two nodes.
+
+        Example: The distance between the nodes 4 and 10 is 4. The distance between the nodes 8 and 10 is 1. The distance between the nodes 1 and 14 is 4.
+
+        using findTreeValue from above, find n1, once n1 is located being counting nodes until n2 is found, return the count
+
+        const nodeDistance = (tree, n1, n2) => {
+            let current = findTreeValue(tree, n1);  // Using function from previous question
+            let count = 0;         
+            while (current) {
+                if (n2 <= current.left) {
+                    current = current.left;
+                } else if (n2 >= current.right) {
+                    current = current.right;                   
+                };
+                
+                count++;
+                if (n2 === current) {
+                    return count;
+                }
+            }
+            return current ? count : 0;
+
+        }
