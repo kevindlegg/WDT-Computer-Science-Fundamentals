@@ -1,0 +1,68 @@
+Exercises
+
+1. What are some pros and cons of using linked lists instead of arrays?
+    - Cons: speed since elements are sequentially "searched", random access is not allowed, extra memory required for pointer
+    - Pros: size is dynamic and not determined until runtime, insertion/deletion is fast
+
+2. Come up with a real world example of a linked list.
+    - map routing...when creating a route in say, Google Maps, there are waypoints along the route that point to the next point on the route
+
+Programming Questions
+You may program the following questions in any language of your choice (JavaScript, pseudocode, etc.).
+
+Before beginning to code, write out a plan explaining how to solve the question.
+
+1. The Linked List push function should take a value, create a node, and add it to the end of a list. Below is a push function for a singly linked list. However, there is something wrong with it. Find the bug and fix the code.
+
+    LinkedList.prototype.push = function(element) {
+        SET node = {
+         value: element,
+         next: null
+        }
+
+        IF the head node does not exist
+         THEN SET head to node
+        ELSE
+         SET current.next to node
+        }
+    }
+
+2. Given an unsorted singly linked list, remove all duplicates from the linked list.
+    Example
+    Input: a -> c -> d -> d -> a
+    Output: a -> c -> d
+
+    Explanation: process each element of the list while there's a .next indicated beginning with head. search the rest of the list for duplicate data values.  if found, set current .next object to .next.next object and continue looking until no more duplicates found while repeating the process if found
+
+    FUNCTION removeDuplicate (list)
+        SET pointer1 to list.head
+        WHILE pointer1 !null and pointer1.next !null
+            SET pointer2 to pointer1
+            WHILE pointer2.next !null
+                IF pointer1.data equals pointer2.next.data
+                    SET pointer2.next to pointer2.next.next
+                ELSE
+                    SET pointer2 to pointer2.next
+                END IF
+            END WHILE
+            SET pointer1 to pointer1.next
+        END WHILE
+   END FUNCTION
+
+3. Given an unsorted singly linked list, reverse it.
+    Example
+    Input: a -> b -> c -> d
+    Output: d -> c -> b -> a
+
+    create a variable to hold the current node and the previous node in the list.  initially load the head and a null in previous properter in the current node variable. loop thru all nodes in the parm passed save the current node's next value, set the current node's next to the previous node, then set the previous node to the current node and load the current node's saved next node. repeat until the node is null
+    FUNCTION reverseList (list)
+        SET pointer1 node to list.head, SET previous to null
+        WHILE pointer1 !null
+            SET next to pointer1.next
+            SET pointer1.next to previous
+            SET previous to pointer1
+            SET pointer1 to next
+        END WHILE
+   END FUNCTION
+
+    

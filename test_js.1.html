@@ -22,19 +22,23 @@
             }
         };
 
-        const reverse = (linkedList) => {
-            var pointer = linkedList.head,
-                previous = null;
-            while (pointer) {
-                var next = pointer.next;
-                pointer.next = previous;
-                previous = pointer;
-                pointer = next;
+        const removeDuplicates = (linkedList) => {
+            var ptr1 = linkedList.head;
+            while (ptr1 && ptr1.next) {
+                var ptr2 = ptr1;
+                while (ptr2.next) {
+                    if (ptr1.data === ptr2.next.data) {
+                        ptr2.next = ptr2.next.next;
+                    } else {
+                        ptr2 = ptr2.next;
+                    }
+                }
+                ptr1 = ptr1.next;
             }
-            return previous;
-        };
-
-        console.log(reverse(oldList));
+            return ptr2;
+        }
+        
+        console.log(removeDuplicates(oldList));
     </script>
 </body>
 
