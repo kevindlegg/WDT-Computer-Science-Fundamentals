@@ -1,0 +1,75 @@
+Exercises
+Provide all code and written answers in a file named algorithms_introduction_answers.txt:
+
+1. Using proper pseudo-code, describe the following primitive algorithms:
+
+ - Making coffee;
+    FUNCTION makeCoffee()
+        SET coffee maker reservoir to full of water
+        SET coffee maker basket to coffee grounds
+        SET coffee maker to on
+
+        IF coffee maker reservoir empty 
+        RETURN coffee
+        END IF
+    END FUNCTION
+ - Washing dishes;
+    FUNCTION washDishes
+        CALL addSoapyWater with sink
+        CALL addDirtyDishes with sink
+        WHILE dirty dishes in sink
+            CALL washDirtyDish with sink
+        END WHILE
+    END FUNCTION
+
+    FUNCTION addSoapyWater(sink)
+        SET water to 1 gallon
+        SET soap to 1 ounce
+        ADD water plus soap to sink
+        RETURN sink
+    END FUNCTION
+
+    FUNCTION addDirtyDishes(sink)
+        WHILE dirty dishes on counter
+            ADD dirty dish to sink
+        END WHILE
+        RETURN sink
+    END FUNCTION
+
+    FUNCTION washDirtyDish(sink)
+        WHILE dirty dishes on counter
+            SET dish to clean
+            SET sink minus dish
+        END WHILE
+        RETURN sink
+    END FUNCTION
+
+ - A choice of your own.
+    Log into Windows
+
+    FUNCTION logIn(user, password) 
+        CALL validateUser with user and password RETURN validUser
+        IF validUser
+            CALL showWindows
+        ELSE 
+            Display unauthorized
+        ENDIF
+    END FUNCTION
+
+    FUNCTION validateUser(user, password)
+        SET isValidUser to CALL userValidation
+        SET isValidPwd to CALL pwdValidation
+        IF isValidUser and isValidPwd
+            RETURN isValid
+        ELSE
+            RETURN !isValid
+        ENDIF
+    END FUNCTION
+
+2. As with the knot algorithm, there may be more than one way to solve the problem. It is essential to try to pick the best algorithm for a situation. Name three companies who created an algorithm that made them successful, e.g., Google's search algorithm. It doesn't need to be a tech example (such as a recipe or manufacturing a product). Google's algorithm produces more relevant results than other search engines; what about each of your cases make them stand out?
+    - McDonald's food prep: they perfected fast food preparation and marketed it to the busy family
+    - Apple and the iPhone: they successfully marked a computer in your hand
+    - Chik-fil-a: brought a non-fastfood restaurant environment to a fast food restaurant - "my pleasure"  :)
+
+3. Hypothesize about what constitutes an efficient algorithm versus an inefficient algorithm.
+    - successful algoriths need to be efficent, cost-effective and solve a singular problem while allowing for some variation in the problem.  the more modular the algorithm, the better as it makes that algorithm easier to adjust
