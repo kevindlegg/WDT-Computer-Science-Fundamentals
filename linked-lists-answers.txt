@@ -20,9 +20,11 @@ Before beginning to code, write out a plan explaining how to solve the question.
          next: null
         }
 
+
         IF the head node does not exist
          THEN SET head to node
         ELSE
+         SET current node to tail
          SET current.next to node
         }
     }
