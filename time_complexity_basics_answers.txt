@@ -48,7 +48,7 @@ Create a file named time_complexity_basics_answers.txt and place your answers wi
     END FUNCTION
 
 8. Determine the time complexity of the following snippet of code. It is commonly known as the Fibonacci sequence.
-    ANSWER: O(1)
+    ANSWER: O(2^n)
 
     FUNCTION fibonacci(number)
     IF number < 1 THEN  (1)
@@ -56,11 +56,11 @@ Create a file named time_complexity_basics_answers.txt and place your answers wi
     ELSE IF number = 1 or 2 THEN (1)
     RETURN 1
     ELSE
-    CALL fibonacci WITH number - 2 RETURNING twoBack (1)
-    CALL fibonacci WITH number - 1 RETURNING oneBack (1)
+    CALL fibonacci WITH number - 2 RETURNING twoBack (n)
+    CALL fibonacci WITH number - 1 RETURNING oneBack (n)
     RETURN twoBack + oneBack (1)
     END IF
     END FUNCTION
 
 9. Out of the code snippets you just saw, which is the most time efficient?
-    - the snippet in question 8...it runs the same regardless of "n"
+    - the snippet in question 6..."n" only has a singular effect on the function where it's exponential in the other two examples
