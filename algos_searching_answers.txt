@@ -1,0 +1,55 @@
+Short Answer
+1. What is a real-life scenario that uses linear search?
+    - find a quarter in a pile of change
+
+2. What is a real-life scenario that uses binary search?
+    - finding the tallest person in a lineup with people aligned from shortest to tallest
+
+3. Given the alphabetically sorted collection in this checkpoint, how many iterations would it take to find the value G using linear search?
+    - seven
+
+4. Given the alphabetically sorted collection in this checkpoint, how many iterations would it take to find the value G using binary search?
+    - three
+
+5. Given an unsorted collection of a million items, which algorithm would you choose between linear search and binary search? Explain your reasoning.
+    - linear: a binary list has be to sorted
+
+6. Given a sorted collection of a million items, which algorithm would you choose between linear search and binary search? Explain your reasoning.
+    - binary: a binary search allows for a sorted list to be split many times to narrow down the search
+
+
+Programming Assignment:
+1. You and a friend have set a wager to see who can find the word "Albatross" in the dictionary the fastest. Write a program to allow you to win the bet.
+    
+    FUNCTION findWord (dictionary,word,firstWordNumber,lastWordNumber) 
+        IF last < first THEN
+            RETURN NOT FOUND
+
+        SET midWordNumber to ROUNDDOWN((lastWordNumber-firstWordNumber) / 2) + firstWordNumber
+        IF dictionary[midWordNumber] = word THEN
+            RETURN midWordNumber
+        ELSE IF word < dictionary[midWordNumber].word THEN
+            CALL findWord WITH dictionary, word, firstWordNumber, midWordNumber - 1 RETURNING result
+            RETURN result
+
+        ELSE
+            CALL findWord WITH dictionary, word, midWordNumber + 1, lastWordNumber RETURNING result
+            RETURN result
+            
+    END FUNCTION
+
+2. You work at a pet store, and a child has asked you to net the only white-spotted goldfish from the fish tank. Write a program that will help you net the right fish.
+
+    FUNCTION netFish(tank, fish) {
+        IF tank EMPTY 
+            RETURN NOT FOUND
+        ENDIF 
+        
+        WHILE netted fish IS NOT fish 
+            IF netted fish IS fish
+                RETURN netted fish
+            ELSE
+                CALL netFish WITH tank
+            ENDIF
+        END WHILE
+    }
