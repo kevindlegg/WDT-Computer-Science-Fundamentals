@@ -1,0 +1,56 @@
+Exercises
+For exercises requiring code, you are free to use the language of your choice.
+
+1. Define and compare recursion and iteration.
+    - iteration utilizes a loop to repeat a process; conversely, recursion involves a function or procedure calling itself with parameters while incrementally moving towards a base case.
+    - iteration is program logic where recursion is defined by the function and that function is called many times
+
+2. Name five algorithms that are commonly implemented by recursion.
+    - factorial, greatest common divisor, towers of Hanoi, binary search, primality tester
+
+3. When should you use recursion, and when should you avoid recursion? Give examples for each.
+    - use recursion when the algorithm can be defined as a combination of sub-results starting with known cases ie. factorial
+    - avoid recursion when a simple pass over the collection can accomplish the task ie. Fibonacci
+
+4. Compare the recursive and iterative solutions to the three algorithms from the checkpoint (Factorial, Maximum, and Fibonacci). What is similar, and what is different?
+    - all three process a set a numbers
+    - Fibonacci has a known algorithm with a pre-defined set of possible answers
+    - Maximum and factorial are variable based on the parameter
+
+5. Given a multi-dimensional collection (such as an array) where the number of dimensions is unknown, write a recursive algorithm to count the number of items in the entire collection.
+    
+    const countItems = (array) => {
+        let count = 0;
+        for (let i=0; i<array.length; i++) {
+            count++;
+            if (array[i].length) {
+                count += countItems(array[i]);
+            }
+        }
+
+        return count;
+    }
+
+6. A palindrome is a word or phrase whose spelling is the same either direction (e.g., racecar). Write a recursive algorithm to determine if a given word or phrase is a palindrome.
+
+    const isPalindrome = (word) => { 
+        if(word.length < 2) return true;
+        if(word[0] != word.slice(-1)) return false;
+        return isPalindrome(word.slice(1,-1));
+    }
+
+7. Laura and Xander are going door-to-door around their block looking for their lost cat. Write a recursive algorithm showing one way they can visit every house on their block exactly once.
+
+    FUNCTION findCat (houses, cat)
+        IF houses IS EMPTY THEN 
+            ERROR
+        ELSE IF SIZE OF houses is 1 THEN
+            RETURN ONLY house IN houses
+        ELSE
+            IF cat IS FOUND in FIRST house
+                RETURN house
+            ELSE
+                CALL findCat USING remainingHouses AND cat
+            END IF
+        END IF
+    END FUNCTION
