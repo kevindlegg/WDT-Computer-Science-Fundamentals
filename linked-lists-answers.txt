@@ -24,9 +24,12 @@ Before beginning to code, write out a plan explaining how to solve the question.
         IF the head node does not exist
          THEN SET head to node
         ELSE
-         SET current node to tail
+         SET current node to head
+         WHILE current.next 
+            current node = current.next
+         END WHILE
          SET current.next to node
-        }
+        END IF
     }
 
 2. Given an unsorted singly linked list, remove all duplicates from the linked list.
