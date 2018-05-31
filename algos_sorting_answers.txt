@@ -1,0 +1,88 @@
+Exercises
+    For exercises requiring code, you are free to use the language OF your choice.
+
+    Create a file named algos_sorting_answers.txt and answer these questions in it:
+
+    1. Write pseudocode for bubble sort.
+        FUNCTION bubbleSort (items)
+            DOUNTIL swapped IS false
+                SET swapped TO false
+                FOR i = FIRST INDEX OF items to LAST INDEX OF items - 1
+                    IF items[i] > items[i+1]
+                        SET tmp TO items[i]
+                        SET items[i] to items[i+1]
+                        SET items[i+1] TO tmp
+                        SET swapped TO true
+                    END IF
+                END FOR
+            END DOUNTIL
+            
+            RETURN items
+        END FUNCTION
+
+        Tested in JS:
+            const bubbleSort = (items) => {
+                let swapped;
+                do {
+                    swapped = false;
+                    for (let i=0; i<items.length; i++) {
+                        if (items[i] > items[i+1]) {
+                            let tmp = items[i];
+                            items[i] = items[i+1];
+                            items[i+1] = tmp;
+                            swapped = true;
+                        }
+                    }
+                } while (swapped);
+                return items;
+            }        
+
+    2. Write pseudocode for quicksort.
+
+        FUNCTION quickSort (items)
+            IF items length <=1 THEN 
+                RETURN items
+            ELSE
+                SET left TO empty array
+                SET right TO empty array
+                SET pivot TO last item OF items
+                SET length TO length OF items
+                FOR i = FIRST INDEX OF remaining items to length OF remaining items - 1
+                    IF ELEMENT in items <= pivot
+                        PUSH items[i] TO left
+                    ELSE
+                        PUSH items[i] TO right
+                    END IF
+                END FOR
+                RETURN newItems AS (CALL quickSort WITH left) + pivot + (CALL quickSort WITH right)
+            END IF
+        END FUNCTION  
+
+        Tested in JS:
+            const quickSort = (items) => {
+                if (items.length <= 1) {
+                    return items;
+                } else {
+                    var left = new Array;
+                    var right = new Array;
+                    var newItems = new Array;
+                    var pivot = items.pop();
+                    var length = items.length;
+
+                    for (let i=0; i<length; i++) {
+                        if (items[i] <= pivot) {
+                            left.push(items[i]);
+                        } else {
+                            right.push(items[i]);
+                        }
+                    }
+
+                    return newItems.concat(quickSort(left), pivot, quickSort(right));
+                }
+            }
+
+    3. We talked about time complexity in a previous checkpoint, and how to get an idea of the efficiency of an algorithm. After looking at the pseudocode for the above sorting methods, identify why merge sort and quick sort are much more efficient than the others. Walking through each algorithm with a few sample collections may help.
+    - both merge sort and quick sort divide the collection into sub-sets of data and divides the work while utilizing recursion to efficiently process the collection
+
+    4. All of the sorts addressed in this checkpoint are known as comparison sorts. Research bucket sort and explain how it works. What is the ideal input for bucket sort?
+    - bucket sort is an algorithm that allows for putting numbers in sequential buckets - buckets = length of array - then typically using collection value-specific formula (for int, number of buckets * element value) to determine the correct bucket to push the element to, insertion sort is typically used to sort each bucket, finally each bucket is concatenated together to render a sorted list.  An array of integers is an ideal input for bucket sort.
